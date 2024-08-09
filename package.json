@@ -1,0 +1,31 @@
+{
+  "name": "blissful-hooks",
+  "version": "0.0.1",
+  "description": "Deep extensibility for all!",
+  "main": "src/index.js",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "htest test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeaVerou/blissful-hooks.git"
+  },
+  "keywords": [
+    "hooks",
+    "plugins"
+  ],
+  "author": "Lea Verou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LeaVerou/blissful-hooks/issues"
+  },
+  "homepage": "https://github.com/LeaVerou/blissful-hooks#readme",
+  "devDependencies": {
+    "htest": "^1.0.0",
+    "release-it": "^17.6.0"
+  }
+}

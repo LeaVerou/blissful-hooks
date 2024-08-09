@@ -7,9 +7,19 @@ export default class Hooks {
 	 * @returns {void}
 	 */
 	add (name, callback, options) {
-		if (typeof name != "string") {
-			let hooks = name;
+		if (Array.isArray(name)) {
+			// One function, multiple hooks
+			for (let n of name) {
+				this.add(n, callback, options);
+			}
+
+			return;
+		}
+		else if (typeof name !== "string") {
 			// Multiple hooks
+			let hooks;
+			[hooks, options] = [name, callback];
+
 			for (let name in hooks) {
 				this.add(name, hooks[name], arguments[1]);
 			}
@@ -17,14 +27,13 @@ export default class Hooks {
 			return;
 		}
 
-		if (Array.isArray(name)) {
-			for (let n of name) {
-				return this.add(n, callback, options);
-			}
+		if (typeof callback !== "function") {
+			throw new Error("Callback must be a function. Got ", callback);
 		}
 
 		if (callback) {
 			let existing = this[name];
+
 			if (!(name in this)) {
 				existing = this[name] = [];
 			}
@@ -51,7 +60,8 @@ export default class Hooks {
 		}
 		// TODO stats on which hooks have already ran?
 
-		for (let callback in this[name]) {
+		for (let callback of this[name]) {
+			console.log(name, callback)
 			callback.call(env?.this ?? env?.context ?? env, env);
 		}
 	}
