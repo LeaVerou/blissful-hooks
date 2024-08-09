@@ -8,7 +8,8 @@
     ".": "./src/index.js"
   },
   "scripts": {
-    "test": "htest test/index.js"
+    "test": "htest test/index.js",
+    "release": "release-it"
   },
   "repository": {
     "type": "git",
