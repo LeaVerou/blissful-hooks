@@ -61,7 +61,6 @@ export default class Hooks {
 		// TODO stats on which hooks have already ran?
 
 		for (let callback of this[name]) {
-			console.log(name, callback)
 			callback.call(env?.this ?? env?.context ?? env, env);
 		}
 	}
